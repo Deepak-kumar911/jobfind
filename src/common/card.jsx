@@ -4,7 +4,7 @@ import {AiOutlineCheckCircle} from 'react-icons/ai'
 import {BsClipboardCheck} from 'react-icons/bs'
 import {GiCubes} from 'react-icons/gi'
 
-export const Card = ({detail,employee}) => {
+export const Card = ({detail}) => {
   return (
     <>
     <div className=''>
