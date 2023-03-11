@@ -10,11 +10,11 @@ export const Card = ({detail}) => {
     <div className=''>
         <div className='flex items-center gap-x-2 my-auto'>
         <AiOutlineCheckCircle className='text-primary text-lg'/>
-        <h5>{detail.job}</h5>
+        <h5 className='capitalize'>{detail.job}</h5>
     </div>
     <div className='flex items-center gap-x-2'>
         <GiCubes className='text-danger text-lg'/>
-        <p className='flex my-auto'>{detail.skills}</p>
+        <p className='flex my-auto capitalize'>{detail.skills}</p>
     </div>
     <div className='flex items-center gap-x-2'>
         <BsCashCoin className='text-success text-lg'/>
