@@ -4,7 +4,7 @@ import Joi from 'joi';
 
 
 
-const startpoint = "http://localhost:8000/api"
+const startpoint = "https://jobfind-backend.vercel.app/api"
 
 const authUser = async (data,point,part) =>{
   const endpoint = point==="employee" ? "employee" : "employer";

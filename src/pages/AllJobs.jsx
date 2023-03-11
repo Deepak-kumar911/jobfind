@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { allPostJobs } from '../services/auth';
 import {FcEmptyFilter} from 'react-icons/fc'
 import { NavLink } from 'react-router-dom';
+import { Card } from '../common/card';
 export const AllJobs = () => {
     const [data,setData] = useState([])
     const userDetails = useContext(authProvider);
@@ -24,12 +25,7 @@ export const AllJobs = () => {
             </div>
             :<div className='grid grid-cols-12 gap-2'>
                {data.map(detail=><NavLink key={detail._id} to={`/view job/${detail._id}`} className='col-span-12 md:col-span-4 lg:col-span-3 no-underline border-2 rounded-lg bg-indigo-600  text-white border-white p-2 leading-4 cursor-pointer '>
-                    <p className='capitalize text-xl text-center'>Job: {detail.job} </p>
-                    <hr className='border-4'/>
-                    <div className=''>
-                    <p className='capitalize'>Skills: {detail.skills}</p>
-                    <p>Salary: {detail.salary}</p>
-                    </div>
+                    <Card detail={detail}/>
                 </NavLink>
                 )}      
             </div>
