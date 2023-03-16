@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { userProfile } from '../services/auth';
 import { jobResponse } from '../services/auth';
 import {toast} from 'react-toastify'
@@ -8,14 +8,16 @@ import {toast} from 'react-toastify'
 export const ProfileCard = () => {
     const param = useParams()
     const navigate = useNavigate()
-    console.log(param.job_id);
+    console.log(param);
     const [data, setData] = useState({ DOB: "", about: "", address: "", education: "", email: "", experience: "", name: "", profession: "", skills: "", contact: "", hobbies: "", status: "", gender: "" })
     const [toogle, setToggle] = useState(0)
     const dateDOB = data.DOB ? new Date(data.DOB).toLocaleDateString() : ""
     useEffect(() => {
         async function fetch() {
             if (param.target === "view") {
-
+                const employee_id = param.job_id
+                const { data: serverData } = await userProfile(employee_id)
+                setData(serverData)
             } else {
                 const { data: serverData } = await userProfile(param.target)
                 setData(serverData)
@@ -43,6 +45,12 @@ export const ProfileCard = () => {
                 <div className=' border-2 border-indigo-400 rounded-lg w-[100%] h-[80vh] p-4'>
                     <div className='flex flex-col md:flex-row  items-center gap-y-2 justify-between'>
                         <div className='flex items-center gap-x-2 capitalize'><BsPersonCircle className='text-3xl md:text-5xl text-blue-500' /><h5>{data.name}</h5></div>
+                        {param.target === "view" ? <div className='cursor-pointer' >
+                            <NavLink to="/profile/view" className="no-underline">
+                                <h6 className='border rounded-md bg-indigo-600 border-green-800 text-white hover:bg-orange-500 px-2 py-1 text-center'>Update Profile</h6>
+                            </NavLink>
+                            </div>           
+                        :
                         <div className='flex gap-x-1'>
                             <div className='cursor-pointer' onClick={()=>handleRemark("accept")}>
                                 <h6 className='border rounded-md bg-green-400 border-green-400 text-white hover:bg-indigo-500  px-2 py-1 text-center'>Accept</h6>
@@ -50,17 +58,18 @@ export const ProfileCard = () => {
                             <div className='cursor-pointer' onClick={()=>handleRemark("reject")}>
                                 <h6 className='border rounded-md bg-red-600 border-green-800 text-white hover:bg-orange-500 px-2 py-1 text-center'>Reject</h6>
                             </div>
-                        </div>
+                        </div>}
+
+
                     </div>
                     <hr />
-                    {param.target === "view" ? "" :
                         <div>
                             <nav className="nav">
                                 <p className={`nav-link active cursor-pointer  ${toogle === 0 ? "border-b-2 border-indigo-400 rounded-md" : ""}`} aria-current="page" onClick={() => setToggle(0)}>About</p>
                                 <p className={`nav-link active cursor-pointer  ${toogle === 1 ? "border-b-2 border-indigo-400 rounded-md" : ""}`} onClick={() => setToggle(1)}>Persional Details</p>
                             </nav>
                         </div>
-                    }
+                    
 
                     <div className={`${toogle === 0 ? "block" : "hidden"}`}>
                         <div className='grid grid-cols-2 capitalize'>

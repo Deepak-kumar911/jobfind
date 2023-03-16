@@ -48,6 +48,8 @@ const  createEmployerProfile = async(data,_id)=>{
   }}
 
 
+  
+
   const userProfile =async (_id) =>{
     try {
       return await axios.get(`${startpoint}/employee/${_id}`)
@@ -124,7 +126,7 @@ const applyJob =async (res)=>{
 
 const applyjobresponse =async (_id)=>{
   try {
-    return await axios.get(`${startpoint}/job//apply/${_id}`)
+    return await axios.get(`${startpoint}/job/apply/${_id}`)
   } catch (err) {
     console.log(err);
   toast.error(err.response.data)

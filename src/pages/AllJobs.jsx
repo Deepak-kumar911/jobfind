@@ -24,7 +24,7 @@ export const AllJobs = () => {
                 <p>Fill free to post job and hire good candidate</p>
             </div>
             :<div className='grid grid-cols-12 gap-2'>
-               {data.map(detail=><NavLink key={detail._id} to={`/view job/${detail._id}`} className='col-span-12 md:col-span-4 lg:col-span-3 no-underline border-2 rounded-lg bg-indigo-600  text-white border-white p-2 leading-4 cursor-pointer '>
+               {data.map(detail=><NavLink key={detail._id} to={`/view job/${detail._id}`} className='col-span-12 md:col-span-4 lg:col-span-3 no-underline border-2 rounded-lg bg-indigo-500  text-white border-white p-2 leading-4 cursor-pointer '>
                     <Card detail={detail}/>
                 </NavLink>
                 )}      

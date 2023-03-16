@@ -31,6 +31,7 @@ export const Navbar = () => {
                                 :<>
                                 <li><NavLink className="dropdown-item" to="/view all jobs">View Jobs</NavLink></li>
                                 <li><NavLink className="dropdown-item" to="/view apply jobs">Apply jobs Status</NavLink></li>
+                                <li><NavLink className="dropdown-item" to={`/view profile/view/${userDetails._id}`}>View Profile</NavLink></li>
                                 <li><NavLink className="dropdown-item" to="/delete account/employee">Delete Account</NavLink></li>
                                 
                                 </>

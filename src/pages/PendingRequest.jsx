@@ -24,11 +24,18 @@ export const PendingRequest = () => {
                 <p>Fill free to post job and hire good candidate</p>
             </div>
             :<div className='grid grid-cols-12 gap-2'>
-               {data.map(detail=> detail.status.map(user => <NavLink key={user.employee_id} to={`/view profile/${user.employee_id}/${detail._id}`} className='col-span-12 md:col-span-4 lg:col-span-3 no-underline border-2 rounded-lg bg-orange-400  text-white border-white p-2 leading-4 cursor-pointer '>
+               {data.map(detail=> detail.status.map(user => <NavLink key={user.employee_id} to={`/view profile/${user.employee_id}/${detail._id}`} className='col-span-12 md:col-span-4 lg:col-span-3 no-underline border-2 rounded-lg bg-orange-400  text-white border-white p-2 leading-3 cursor-pointer '>
                     <p className='capitalize text-xl text-center'>Job: {detail.job} </p>
                     <hr className='border-4'/>
                     <div className=''>
-                    
+                    <p className='capitalize'>skills: {detail.skills}</p>
+                    <p className='capitalize'>salary: {detail.salary}</p>
+                    <div className='flex gap-x-2'>
+                    <p className='capitalize '>openings:</p>
+                    <div className='w-[1rem] h-[1rem] text-white rounded-full bg-indigo-500 flex justify-center items-center text-sm'>
+                      {detail.openings}
+                    </div>
+                    </div>
                     </div>
                 </NavLink>
                 ))}      

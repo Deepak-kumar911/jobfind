@@ -65,6 +65,7 @@ function App() {
           <Route path="/pending request" element={<PendingRequest/>}/>
           <Route path="/employer profile" element={<EmployerProfile />} />
           <Route path="/employee profile" element={<EmployeeProfile />} />
+          <Route path="/profile/:path" element={<EmployeeProfile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
